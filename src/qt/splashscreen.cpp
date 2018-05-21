@@ -19,6 +19,9 @@ SplashScreen::SplashScreen(const QPixmap &pixmap, Qt::WindowFlags f) :
     int line1 = 0;
     int line2 = 13;
     int line3 = 26;
+    int line4 = 39;
+    int line5 = 52;
+
 
     float fontFactor            = 1.0;
 
@@ -26,7 +29,8 @@ SplashScreen::SplashScreen(const QPixmap &pixmap, Qt::WindowFlags f) :
     QString titleText       = QString(QApplication::applicationName()).replace(QString("-testnet"), QString(""), Qt::CaseSensitive); // cut of testnet, place it as single object further down
     QString versionText     = QString("Version %1 ").arg(QString::fromStdString(FormatFullVersion()));
     QString copyrightText1   = QChar(0xA9)+QString(" 2009-%1 ").arg(COPYRIGHT_YEAR) + QString(tr("The Bitcoin developers"));
-    QString copyrightText2   = QChar(0xA9)+QString(" 2011-%1 ").arg(COPYRIGHT_YEAR) + QString(tr("The Litecoin developers"));
+    QString copyrightText2   = QChar(0xA9)+QString(" 2011-%1 ").arg(COPYRIGHT_YEAR) + QString(tr("The LiteCoin developers"));
+    QString copyrightText3   = QString(tr("CopyLeft"))+QString(" %1 ").arg(2018) + QString(tr("TanerCoin BCRG Students"));
 
     QString font            = "Arial";
 
@@ -40,15 +44,17 @@ SplashScreen::SplashScreen(const QPixmap &pixmap, Qt::WindowFlags f) :
     }
 
     QPainter pixPaint(&newPixmap);
-    pixPaint.setPen(QColor(70,70,70));
+    pixPaint.setPen(QColor(12,12,12));
 
     pixPaint.setFont(QFont(font, 9*fontFactor));
-    pixPaint.drawText(paddingLeftCol2,paddingTopCol2+line3,versionText);
+    pixPaint.drawText(paddingLeftCol2,paddingTopCol2+line4,versionText);
+    pixPaint.drawText(paddingLeftCol2,paddingTopCol2+line5,versionText);
 
     // draw copyright stuff
     pixPaint.setFont(QFont(font, 9*fontFactor));
     pixPaint.drawText(paddingLeftCol2,paddingTopCol2+line1,copyrightText1);
     pixPaint.drawText(paddingLeftCol2,paddingTopCol2+line2,copyrightText2);
+    pixPaint.drawText(paddingLeftCol2,paddingTopCol2+line3,copyrightText3);
 
     pixPaint.end();
 
